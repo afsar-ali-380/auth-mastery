@@ -1,4 +1,5 @@
 Auth-Mastery
+
 A full-stack authentication and authorization project built with Next.js, Node.js, Express.js, and MongoDB.
 This project was created as a self-learning project and is designed to showcase my skills in building secure, token-based authentication systems.
 
