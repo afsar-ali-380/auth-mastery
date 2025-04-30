@@ -5,7 +5,7 @@ export const signUpSchema = z
     firstName: z.string().min(2, "First name is required"),
     lastName: z.string().min(2, "Last name is required"),
     email: z.string().email("Invalid email"),
-    password: z.string().min(6, "Password must be at least 6 characters"),
+    password: z.string().min(6, "Password must be atleast 6 characters"),
     confirmPassword: z.string().min(6, "Confirm password is required"),
   })
   .refine((data) => data.password === data.confirmPassword, {
@@ -14,3 +14,10 @@ export const signUpSchema = z
   });
 
 export type SignUpSchemaType = z.infer<typeof signUpSchema>;
+
+export const logInSchema = z.object({
+  email: z.string().email("Invalid email"),
+  password: z.string().min(6, "Password must be atleast 6 character"),
+});
+
+export type LogInSchemaType = z.infer<typeof logInSchema>;

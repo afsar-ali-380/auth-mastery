@@ -10,7 +10,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button
       type={type}
-      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition-colors duration-200 cursor-pointer"
+      className="w-full bg-gray-900 hover:bg-indigo-600 text-white font-semibold py-2 rounded-lg transition-colors duration-200 cursor-pointer"
     >
       {children}
     </button>

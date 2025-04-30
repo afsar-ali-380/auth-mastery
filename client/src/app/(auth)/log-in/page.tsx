@@ -1,11 +1,9 @@
-// import { LogInForm } from "@/components/forms/LogInForm";
-import { SignUp } from "@/components/forms/SignUp";
+import { LogInForm } from "@/components/forms/LogInForm";
 
 export default function LogInPage() {
   return (
     <>
-      <SignUp />
-      {/* <LogInForm /> */}
+      <LogInForm />
     </>
   );
 }

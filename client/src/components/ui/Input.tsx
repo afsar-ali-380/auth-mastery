@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { FieldError } from "react-hook-form";
+import { FieldError, useForm } from "react-hook-form";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 type InputProps = {
@@ -9,7 +9,7 @@ type InputProps = {
   id: string;
   placeholder?: string;
   error?: FieldError;
-  register: any;
+  register?: any;
 };
 
 export const Input: React.FC<InputProps> = ({
@@ -47,7 +47,7 @@ export const Input: React.FC<InputProps> = ({
         placeholder={placeholder}
         {...(register ? register(id) : {})}
         className={`w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:border-none focus:ring-2 ${
-          error ? "focus:ring-red-500" : "focus:ring-blue-500"
+          error ? "focus:ring-red-500" : "focus:ring-indigo-500"
         }`}
       />
       {isPassword && (
