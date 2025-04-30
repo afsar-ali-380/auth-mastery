@@ -2,6 +2,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema, SignUpSchemaType } from "@/utils/validationSchema";
+import { Input } from "../ui/Input";
+import { Button } from "../ui/Button";
 
 export const SignUpForm = () => {
   const {
@@ -15,65 +17,61 @@ export const SignUpForm = () => {
   };
 
   return (
-    <div>
-      <form
-        onSubmit={handleSubmit(submitForm)}
-        className="w-[500px] mx-auto my-20 flex flex-col gap-5 border rounded-xl p-8"
-      >
-        <input
-          type="text"
-          {...register("firstName")}
-          placeholder="Enter Your First Name"
-          className="border-2 border-blue-600/90 rounded py-2 px-2 text-sm focus:outline-none"
-        />
-        {errors.firstName && (
-          <p className="text-red-500 text-xs">{errors.firstName.message}</p>
-        )}
-        <input
-          type="text"
-          {...register("lastName")}
-          placeholder="Enter Your Last Name"
-          className="border-2  border-blue-600/90 rounded py-2 px-2 text-sm focus:outline-none"
-        />
-        {errors.lastName && (
-          <p className="text-red-500 text-xs">{errors.lastName.message}</p>
-        )}
-        <input
-          type="email"
-          {...register("email")}
-          placeholder="example@gmail.com"
-          className="border-2  border-blue-600/90 rounded py-2 px-2 text-sm focus:outline-none"
-        />
-        {errors.email && (
-          <p className="text-red-500 text-xs">{errors.email.message}</p>
-        )}
-        <input
-          type="password"
-          {...register("password")}
-          placeholder="Create Your Password"
-          className="border-2  border-blue-600/90 rounded py-2 px-2 text-sm focus:outline-none"
-        />
-        {errors.password && (
-          <p className="text-red-500 text-xs">{errors.password.message}</p>
-        )}
-        <input
-          type="password"
-          {...register("confirmPassword")}
-          placeholder="Confirm Your Password"
-          className="border-2  border-blue-600/90 rounded py-2 px-2 text-sm focus:outline-none"
-        />
-        {errors.confirmPassword && (
-          <p className="text-red-500 text-xs">
-            {errors.confirmPassword.message}
-          </p>
-        )}
-        <button
-          type="submit"
-          className="bg-blue-600 rounded-lg py-2 text-white cursor-pointer"
-        >
-          Sign In
-        </button>
-      </form>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-100 via-white to-purple-100 p-4">
+      <div className="w-full max-w-md  bg-white shadow-2xl rounded-2xl p-8">
+        <h2 className="text-center text-3xl font-bold text-gray-700 mb-6">
+          Create Account
+        </h2>
+        <form onSubmit={handleSubmit(submitForm)} className="space-y-5">
+          <Input
+            label="First Name"
+            type="text"
+            id="firstName"
+            register={register}
+            error={errors.firstName}
+            placeholder="Enter Your First Name"
+          />
+          <Input
+            label="Last Name"
+            type="text"
+            id="lastName"
+            register={register}
+            error={errors.lastName}
+            placeholder="Enter Your Last Name"
+          />
+          <Input
+            label="Email"
+            type="email"
+            id="email"
+            register={register}
+            error={errors.email}
+            placeholder="example@gmail.com"
+          />
+          <Input
+            label="Password"
+            type="password"
+            id="password"
+            register={register}
+            error={errors.password}
+            placeholder="Create Your Password"
+          />
+          <Input
+            label="Confirm Password"
+            type="password"
+            id="confirmPassword"
+            register={register}
+            error={errors.confirmPassword}
+            placeholder="Confirm Your Password"
+          />
+          <Button type="submit">Sign Up</Button>
+        </form>
+        <p className="text-sm text-center text-gray-600 mt-4">
+          Already have an account?
+          <a href="#" className="ml-1 text-blue-600 hover:underline">
+            Log in
+          </a>
+        </p>
+      </div>
     </div>
   );
 };

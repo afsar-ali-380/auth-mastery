@@ -1,5 +1,5 @@
-import "./global.css";
-import { Header } from "@/components/layouts/Header";
+import "@/styles/global.css";
+import { Header } from "@/components/Header";
 
 export const metadata = {
   title: "Next.js",
