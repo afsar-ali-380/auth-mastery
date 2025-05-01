@@ -1,8 +1,17 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
+
 const app = express();
 
 require("./connect");
+
+app.use(
+  cors({
+    origin: "http://localhost:3000", // exactly match frontend URL
+    credentials: true, // allow cookies/credentials
+  })
+);
 
 app.use(express.json());
 

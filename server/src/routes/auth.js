@@ -4,13 +4,13 @@ const authController = require("../controllers/auth");
 const validators = require("../utils/validators");
 
 authRouter.post(
-  "/user/register",
+  "/register",
   validators.registerUserValidations,
   authController.registerUser
 );
 
 authRouter.post(
-  "/user/login",
+  "/login",
   validators.loginUserValidations,
   authController.loginUser
 );

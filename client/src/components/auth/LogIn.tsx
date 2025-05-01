@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { logInSchema, LogInSchemaType } from "@/utils/validationSchema";
 import Link from "next/link";
+import { login } from "@/lib/api/auth";
+import { useState } from "react";
 
 export const LogInForm = () => {
   const {
@@ -13,9 +15,19 @@ export const LogInForm = () => {
     formState: { errors },
   } = useForm<LogInSchemaType>({ resolver: zodResolver(logInSchema) });
 
-  const handleLogin = (data: LogInSchemaType) => {
+  const [userData, setUserData] = useState<any>("");
+
+  const handleLogin = async (data: LogInSchemaType) => {
     console.log("validate data", data);
+    try {
+      const user = await login(data);
+      setUserData(user);
+    } catch (err) {
+      console.error("Login failed:", err);
+    }
   };
+
+  console.log(userData);
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-b  from-blue-100 via-white to-purple-100 p-4">

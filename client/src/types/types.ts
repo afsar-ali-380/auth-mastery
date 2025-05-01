@@ -1,4 +1,4 @@
-export type UserDataType = {
+export type RegisterUserType = {
   firstname: string;
   lastname: string;
   email: string;

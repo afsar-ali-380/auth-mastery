@@ -8,7 +8,7 @@ export const Navbar = () => {
         <ul className="flex space-x-6 text-base font-medium">
           <li>
             <Link
-              href={"/log-in"}
+              href={"/login"}
               className="hover:text-indigo-400 transition-colors"
             >
               Sign In
@@ -16,7 +16,7 @@ export const Navbar = () => {
           </li>
           <li>
             <Link
-              href={"/sign-up"}
+              href={"/signup"}
               className="hover:text-indigo-400 transition-colors"
             >
               Sign Up

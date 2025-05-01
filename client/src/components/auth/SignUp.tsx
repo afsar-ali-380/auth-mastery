@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema, SignUpSchemaType } from "@/utils/validationSchema";
 import Link from "next/link";
+import { signup } from "@/lib/api/auth";
 
 export const SignUpForm = () => {
   const {
@@ -13,8 +14,14 @@ export const SignUpForm = () => {
     formState: { errors },
   } = useForm<SignUpSchemaType>({ resolver: zodResolver(signUpSchema) });
 
-  const submitForm = (data: SignUpSchemaType) => {
+  const handleSignup = async (data: SignUpSchemaType) => {
     console.log("Validated Data", data);
+    try {
+      const res = await signup(data);
+      console.log(res);
+    } catch (err) {
+      console.error("Registration failed:", err);
+    }
   };
 
   return (
@@ -23,7 +30,7 @@ export const SignUpForm = () => {
         <h2 className="text-center text-3xl font-bold text-gray-800 mb-6">
           Create Account
         </h2>
-        <form onSubmit={handleSubmit(submitForm)} className="space-y-5">
+        <form onSubmit={handleSubmit(handleSignup)} className="space-y-5">
           <Input
             label="First Name"
             type="text"
